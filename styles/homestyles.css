@@ -1,0 +1,200 @@
+/* Общие стили */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #0080ff;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  header h1 {
+    margin: 10px 0;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  header nav ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin-left: 15px;
+  }
+  
+  header nav ul li .nav-link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  header nav ul li .nav-link.active {
+    text-decoration: underline;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .alert {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    margin-top: 30px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  table {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .table td button {
+    margin: 5px;
+  }
+  
+  /* Пагинация */
+  .pagination {
+    justify-content: center;
+  }
+  
+  .page-item .page-link {
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+  
+  .page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Модальные окна */
+  .modal-dialog {
+    max-width: 600px;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-footer button {
+    font-size: 1rem;
+  }
+  
+  .modal-body {
+    font-size: 1.1rem;
+  }
+  
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  /* Стили для кнопок в таблице */
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+  }
+  
+  .btn-info:hover {
+    background-color: #138496;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: white;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Адаптивные стили */
+  @media (max-width: 767px) {
+    header h1 {
+      font-size: 1.5rem;
+    }
+  
+    header nav ul {
+      text-align: center;
+      padding: 0;
+    }
+  
+    header nav ul li {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    .pagination {
+      flex-wrap: wrap;
+    }
+  
+    .pagination .page-item {
+      margin-bottom: 10px;
+    }
+  }
+  

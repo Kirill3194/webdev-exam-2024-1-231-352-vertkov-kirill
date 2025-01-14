@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Account - Learn Russian</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../styles/homestyles.css">
+</head>
+<body>
+
+  <!-- Шапка сайта -->
+  <header>
+    <div class="container-fluid">
+      <div class="column">
+        <div class="col-md-6">
+          <h1>Learn Russian</h1>
+        </div>
+        <div class="col-md-6 text-start">
+          <img src="../foto/learn-russian-logo.png" alt="Logo" class="img-fluid" style="width: 20%;">
+        </div>
+        <div class="col-12">
+          <nav>
+            <ul class="nav justify-content-end">
+              <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="#personal-account" class="nav-link active">Personal Account</a></li>
+              <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Область уведомлений -->
+  <div class="alert alert-info" role="alert" id="notification-area">
+    You have 3 upcoming lessons this week!
+  </div>
+
+  <!-- Таблица заказов -->
+  <a name="personal-account">
+  <section class="container mt-5">
+    <h2>Your Orders</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Course</th>
+          <th>Lesson Date</th>
+          <th>Total Cost</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="order-table-body">
+        <!-- Динамически заполняемая таблица -->
+        <tr>
+          <td>1</td>
+          <td>Beginner Russian</td>
+          <td>2025-01-20</td>
+          <td>$100</td>
+          <td>
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#orderDetailsModal">Подробнее</button>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrderModal">Изменить</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteOrderModal">Удалить</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <!-- Модальное окно - Подробности заказа -->
+  <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Course: Beginner Russian</h5>
+          <p>Description: This course covers the basics of the Russian language, including grammar and vocabulary.</p>
+          <p>Discounts/Additional Costs: No discounts applied. Total cost is $100.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно - Изменение заказа -->
+  <div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editOrderModalLabel">Edit Order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="edit-order-form">
+            <div class="mb-3">
+              <label for="course-name" class="form-label">Course Name</label>
+              <input type="text" class="form-control" id="course-name" value="Beginner Russian" required>
+            </div>
+            <div class="mb-3">
+              <label for="lesson-date" class="form-label">Lesson Date</label>
+              <input type="date" class="form-control" id="lesson-date" value="2025-01-20" required>
+            </div>
+            <div class="mb-3">
+              <label for="total-cost" class="form-label">Total Cost</label>
+              <input type="number" class="form-control" id="total-cost" value="100" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-changes">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно - Удаление заказа -->
+  <div class="modal fade" id="deleteOrderModal" tabindex="-1" aria-labelledby="deleteOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteOrderModalLabel">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this order?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" id="confirm-delete">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Футер -->
+  <a name="contact">
+  <footer class="text-center py-4">
+    <div>
+      <p>Contacts: +7 (123) 456-7890 | info@language-school.com</p>
+      <p>
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a href="https://twitter.com" target="_blank">Twitter</a> |
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS файлы -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/home.js"></script>
+</body>
+</html>
