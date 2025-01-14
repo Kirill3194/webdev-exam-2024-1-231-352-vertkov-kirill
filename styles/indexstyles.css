@@ -1,0 +1,78 @@
+/* Общие стили */
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  header {
+    background-color: #0080ff;
+    padding: 20px 0;
+  }
+  header h1 {
+    color: white;
+  }
+  nav {
+    display: flex;
+    justify-content: start;
+    align-self: start;
+  }
+  nav ul {
+    padding-left: 0;
+    list-style-type: none;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+  
+  nav ul li .nav-link{
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .modal-dialog {
+    max-width: 500px;
+  }
+  
+  .alert {
+    margin: 20px 0;
+  }
+
+  section .form-inline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  section form .form-control1{
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  section form .form-control2{
+    grid-column-start: 5;
+    grid-column-end: 7;
+  }
+
+.card {
+  width: 110%
+}

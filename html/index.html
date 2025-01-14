@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Russian</title>
+  <link rel="stylesheet" href="../styles/indexstyles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+  <!-- Шапка сайта -->
+  <header>
+    <div class="container-fluid">
+      <div class="column">
+        <div class="col-md-6">
+          <h1>Learn Russian</h1>
+        </div>
+        <div class="col-md-6">
+          <img src="../foto/learn-russian-logo.png" alt="Логотип" class="img-fluid" style="width: 20%;">
+        </div>
+        <div class="col-12">
+          <nav>
+            <ul class="nav justify-content-end">
+              <li class="nav-item"><a href="#courses" class="nav-link">Courses</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+              <li class="nav-item"><a href="home.html" class="nav-link">User Account</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Область уведомлений -->
+  <div class="alert alert-info" role="alert">
+    Welcome! Check out our new courses available this month!
+  </div>
+  <!-- Блок описания языковой школы -->
+   <a name="about">
+  <section id="about-school" class="container">
+    <h2>About Our Language School</h2>
+    <p>Our mission is to provide quality education for everyone interested in learning Russian. We offer a variety of courses for all levels.</p>
+  </section>
+
+  <!-- Преимущества изучения русского языка -->
+  <section id="benefits" class="container">
+    <h2 class="text-center">Advantages of Learning Russian</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Global Language</h3>
+        <p>Russian is widely spoken around the world.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Rich Culture</h3>
+        <p>Understand Russian literature and art more deeply.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Career Opportunities</h3>
+        <p>Open up international career prospects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Предлагаемые курсы -->
+    <a name="courses">
+  <section id="courses" class="container">
+    <h2>Courses Offered</h2>
+    <div class="column">
+      <div class="col-md-4">
+        <div class="card">
+            <p style="margin-left: 10px;">Beginner Course</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="margin: 5px 0;">
+          <p style="margin-left: 10px;">Intermediate Course</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <p style="margin-left: 10px;">Advanced</p>
+        </div>
+      </div>
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Форма поиска -->
+  <section id="search-courses" class="container">
+    <h2>Search Courses</h2>
+    <form action="/search-courses" method="get" class="form-inline">
+      <input type="text" class="form-control1 form-control mb-2 mr-sm-2" name="course_name" placeholder="Search by course name">
+      <select class="form-control2 form-control mb-2 mr-sm-2" name="level">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+  </section>
+
+
+  <!-- Списки репетиторов -->
+  <section id="tutors" class="container">
+    <h2>Available Tutors</h2>
+    <div id="tutor-list">
+      <div class="column">
+        <div class="col-md-4">
+          <div class="card">
+            <p style="margin-left: 10px;">Tutor 1 - Qualifications: MA in Russian - Experience: 5 years</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="margin: 5px 0;">
+            <p style="margin-left: 10px;">Tutor 2 - Qualifications: BA in Languages - Experience: 3 years</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#orderModal" style="margin-top: 10px;">
+      Request a Tutoring Session
+    </button>  
+  </section>
+
+
+  <!-- Модальное окно заказа -->
+  <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderModalLabel">Запросить урок</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="tutor-name">Имя репетитора</label>
+                        <input type="text" class="form-control" id="tutor-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lesson-time">Дата и время</label>
+                        <input type="datetime-local" class="form-control" id="lesson-time" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить запрос</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Поиск репетиторов -->
+  <section id="tutor-search" class="container">
+    <h2>Search for Tutors</h2>
+    <form class="form-inline">
+      <select class="form-control1 form-control mb-2 mr-sm-2">
+        <option value="all">All Qualifications</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <select class="form-control2 form-control mb-2 mr-sm-2">
+        <option value="all">All levels of experience</option>
+        <option value="1">1-3 years</option>
+        <option value="2">3-5 years</option>
+        <option value="3">5+ years</option>
+      </select>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+  </section>
+
+  <!-- Футер -->
+   <a name="contact">
+  <footer class="text-center py-4">
+    <div>
+      <p>contacts: +7 (123) 456-7890 | info@language-school.com</p>
+      <p>
+        <a href="https://facebook.com" target="_blank">Facebook</a> |
+        <a href="https://twitter.com" target="_blank">Twitter</a> |
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS файлы -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
