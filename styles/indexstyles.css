@@ -1,106 +1,175 @@
 /* Общие стили */
-  body {
-    font-family: 'Arial', sans-serif;
-  }
-  
-  header {
-    background-color: #0080ff;
-    padding: 20px 0;
-  }
-  header h1 {
-    color: white;
-    margin: 10px 0;
-  }
-  .nav1 {
-    display: flex;
-    justify-content: start;
-    align-self: start;
-  }
-  nav ul {
-    padding-left: 0;
-    list-style-type: none;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 5px;
-    margin-top: 10px;
-  }
-  
-  nav ul li .nav-link{
-    text-decoration: none;
-    color: #ffffff;
-  }
-  
-  footer {
-    background-color: #f8f9fa;
-    padding: 20px;
-  }
-  
-  footer p {
-    margin: 0;
-  }
-  
-  footer a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .card-body {
-    padding: 15px;
-  }
-  
-  /* Модальное окно */
-  .modal-dialog {
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background-color: #0080ff;
+  padding: 20px 0;
+}
+
+header h1 {
+  color: white;
+  margin: 10px 0;
+}
+
+.nav1 {
+  display: flex;
+  justify-content: start;
+  align-self: start;
+}
+
+nav ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+nav ul li .nav-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+/* Модальное окно */
+.modal-dialog {
   max-width: 600px;
-  }
+}
 
-  .modal-body .form-group {
+.modal-body .form-group {
   margin-bottom: 1.5rem;
-  }
+}
 
-  .modal-footer {
+.modal-footer {
   display: flex;
   justify-content: space-between;
-  }
+}
 
-  .alert {
-    margin: 20px 0;
-  }
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+}
 
-  section .form-inline {
-    display: grid;
-    grid-column-gap: 10px;
-    
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-  }
+.alert {
+  margin: 20px 0;
+}
 
-  section form .form-control1 {
-    grid-column-start: 1;
-    grid-column-end: 5;
-  }
+/* Стили для форм в модальном окне */
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+}
 
-  section form .form-control2 {
-    grid-column-start: 5;
-    grid-column-end: 7;
-  }
+.modal-body form .form-group {
+  margin-bottom: 1.5rem;
+}
 
-  section form .form-control3 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
+/* Кастомные стили для кнопок */
+.btn-primary {
+  background-color: #0080ff;
+  border-color: #0080ff;
+}
 
-  section form .form-control4 {
-    grid-column-start: 3;
-    grid-column-end: 5;
-  }
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
 
-  section form .btn1 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-  }
+/* Стили для переключения между формами в модальном окне */
+#register-form {
+  display: none;
+}
 
-  .card {
-  width: 110%
-  }
+/* Стили для формы поиска */
+section .form-inline {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+section form .form-control1 {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+section form .form-control2 {
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+section form .form-control3 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+section form .form-control4 {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+section form .btn1 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+
+/* Стиль для карт */
+.card {
+  width: 110%;
+}
+
+/* Стили для модальных окон */
+.modal-dialog {
+  max-width: 500px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Кастомные стили для кнопок */
+.btn-primary {
+  background-color: #0080ff;
+  border-color: #0080ff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+

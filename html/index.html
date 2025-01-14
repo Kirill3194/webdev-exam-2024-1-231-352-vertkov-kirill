@@ -26,13 +26,67 @@
               <li class="nav-item"><a href="#courses" class="nav-link">Courses</a></li>
               <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
               <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-              <li class="nav-item"><a href="home.html" class="nav-link">User Account</a></li>
+              <li class="nav-item"><a href="#" id="user-account" class="nav-link">User Account</a></li>
             </ul>
           </nav>
         </div>
       </div>
     </div>
   </header>
+
+    <!-- Модальное окно авторизации и регистрации -->
+    <div class="modal fade" id="userAccountModal" tabindex="-1" role="dialog" aria-labelledby="userAccountModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userAccountModalLabel">User Login</h5>
+            <button type="button" class="close1" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Форма входа -->
+            <div id="login-form">
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="login-email">Email Address</label>
+                  <input type="email" class="form-control" id="login-email" required>
+                </div>
+                <div class="form-group">
+                  <label for="login-password">Password</label>
+                  <input type="password" class="form-control" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+              <p class="mt-2">Don't have an account? <a href="#" id="show-register">Register here</a></p>
+            </div>
+  
+            <!-- Форма регистрации -->
+            <div id="register-form" style="display: none;">
+              <form id="registerForm">
+                <div class="form-group">
+                  <label for="register-email">Email Address</label>
+                  <input type="email" class="form-control" id="register-email" required>
+                </div>
+                <div class="form-group">
+                  <label for="register-password">Password</label>
+                  <input type="password" class="form-control" id="register-password" required>
+                </div>
+                <div class="form-group">
+                  <label for="confirm-password">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirm-password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Register</button>
+              </form>
+              <p class="mt-2">Already have an account? <a href="#" id="show-login">Login here</a></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="close-modal1" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <!-- Область уведомлений -->
   <div class="alert alert-info" role="alert">
@@ -65,7 +119,7 @@
   </section>
 
   <!-- Предлагаемые курсы -->
-    <a name="courses">
+  <a name="courses">
   <section id="courses" class="container">
     <h2>Courses Offered</h2>
     <div class="column">
@@ -148,7 +202,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="orderModalLabel">Request a Tutoring Session</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close2" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -169,7 +223,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" id="close-modal" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" id="close-modal2" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="submit-request">Submit</button>
         </div>
       </div>
