@@ -1,3 +1,23 @@
+function addOrdersToPage() {
+  getOrders().then(orders => {
+    let table = document.getElementById('order-table-body');
+    for (let order of orders) {
+      table.insertAdjacentHTML('beforeend', `<tr>
+        <td>${order.id}</td>
+        <td>Beginner Russian</td>
+        <td>2025-01-20</td>
+        <td>$100</td>
+        <td>
+          <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#orderDetailsModal">Подробнее</button>
+          <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editOrderModal">Изменить</button>
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteOrderModal">Удалить</button>
+        </td>
+      </tr>`);
+    }
+  })
+}
+addOrdersToPage();
+
 document.addEventListener("DOMContentLoaded", function() {
 
     // Обработчик для кнопки "Save Changes" (сохранение изменений в заказе)

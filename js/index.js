@@ -1,3 +1,37 @@
+getTutors().then(tutors => {
+    const parent = document.getElementById('tutor-column');
+    for (const tutor of tutors) {
+        parent.insertAdjacentHTML('beforeend', `<div class="col-md-4">
+          <div class="card">
+            <p style="margin-left: 10px;">Tutor ${tutor.id} - Name: ${tutor.name}  - Qualifications: ${tutor.languages_offered.join(', ')} - 
+            Experience: ${tutor.work_experience} years - Language level: ${tutor.language_level}</p>
+          </div>
+        </div>`)
+    }
+})
+
+let allCourses = [];
+function showCourses(page) {
+    const parent = document.getElementById('course-column');
+    
+    getCourses().then(courses => {
+        allCourses = courses;
+        parent.innerHTML = '';
+        courses = courses.slice(page * 3, Math.min((page + 1) * 3), courses.length);
+
+        for (const course of courses) {
+            parent.insertAdjacentHTML('beforeend', `<div class="col-md-4">
+                <div class="card">
+                    <p style="margin-left: 10px;">${course.id}. ${course.name}</p>
+                </div>
+            </div>`)
+        }
+    })
+}
+
+let page = 1;
+showCourses(page);
+
 document.addEventListener("DOMContentLoaded", function() {
     // Получаем кнопку, которая открывает модальное окно
     const openModalButton = document.querySelector('button[data-toggle="modal"]');
