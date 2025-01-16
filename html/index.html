@@ -124,32 +124,18 @@
     <h2>Courses Offered</h2>
     <div class="column">
       <div id="course-column">
-        <div class="col-md-4">
-        <div class="card">
-            <p style="margin-left: 10px;">Beginner Course</p>
-        </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="margin: 5px 0;">
-            <p style="margin-left: 10px;">Intermediate Course</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <p style="margin-left: 10px;">Advanced</p>
-          </div>
-        </div>
+        
       </div>
       
       <nav aria-label="Page navigation" class="nav1">
         <ul class="pagination justify-content-center">
           <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+            <a class="page-link" id="previous_courses" aria-label="Previous">
               <span aria-hidden="true">Previous</span>
             </a>
           </li>
           <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
+            <a class="page-link" id="next_courses" aria-label="Next">
               <span aria-hidden="true">Next</span>
             </a>
           </li>
@@ -161,7 +147,7 @@
   <!-- Форма поиска -->
   <section id="search-courses" class="container">
     <h2>Search Courses</h2>
-    <form action="/search-courses" method="get" class="form-inline">
+    <form action="/search-courses" method="get" class="form-inline1">
       <input type="text" class="form-control1 form-control mb-2 mr-sm-2" name="course_name" placeholder="Search by course name">
       <select class="form-control2 form-control mb-2 mr-sm-2" name="level">
         <option value="beginner">Beginner</option>
@@ -169,7 +155,12 @@
         <option value="advanced">Advanced</option>
       </select>
       <button type="submit" class="btn btn-primary mb-2">Search</button>
+      <div id="search-courses-list">
+      </div>
     </form>
+    <div class="column" id="search-courses-column">
+          
+    </div>
   </section>
 
 
@@ -180,6 +171,20 @@
       <div class="column" id="tutor-column">
         
       </div>
+      <nav aria-label="Page navigation" class="nav1">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" id="previous_tutors" aria-label="Previous">
+              <span aria-hidden="true">Previous</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" id="next_tutors" aria-label="Next">
+              <span aria-hidden="true">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#orderModal" style="margin-top: 10px;">
       Request a Tutoring Session
@@ -224,7 +229,7 @@
   <!-- Поиск репетиторов -->
   <section id="tutor-search" class="container">
     <h2>Search for Tutors</h2>
-    <form class="form-inline">
+    <form class="form-inline2">
       <select class="form-control3 form-control mb-2 mr-sm-2">
         <option value="all">All Qualifications</option>
         <option value="beginner">Beginner</option>
@@ -233,12 +238,15 @@
       </select>
       <select class="form-control4 form-control mb-2 mr-sm-2">
         <option value="all">All levels of experience</option>
-        <option value="1">1-3 years</option>
+        <option value="1">0-3 years</option>
         <option value="2">3-5 years</option>
         <option value="3">5+ years</option>
       </select>
       <button type="submit" class="btn1 btn btn-primary mb-2">Search</button>
     </form>
+    <div class="column" id="tutor-search-column">
+          
+    </div>
   </section>
 
   <!-- Футер -->
