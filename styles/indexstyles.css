@@ -142,8 +142,10 @@ section form .btn1 {
 }
 
 /* Стиль для карт */
+
 .card {
   width: 200%;
+  max-width: 800px;
   margin: 5px 0;
 }
 

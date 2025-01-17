@@ -1,0 +1,45 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+table {
+    margin-top: 20px;
+}
+
+table th, table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-secondary {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#backButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #5A6268;
+    color: white;
+}
