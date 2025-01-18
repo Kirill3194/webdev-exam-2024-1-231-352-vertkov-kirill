@@ -1,5 +1,6 @@
 function addOrdersToPage() {
   getOrders().then(orders => {
+    console.log(orders)
     let table = document.getElementById('order-table-body');
     for (let order of orders) {
       table.insertAdjacentHTML('beforeend', `<tr>
