@@ -90,12 +90,14 @@ async function getOrderById(id) {
 }
 
 async function addOrder(body) {
-    const path = "/api/courses"
+    const path = "/api/orders"
     try {
-      const request = new Request(url + path + api_key, {
+      const request = new Request(url + path + api_key, { 
         method: "POST",
         body: JSON.stringify(body),
-        headers: myHeaders
+        headers: {
+          'Content-Type': 'application/json',
+      },
       });
       const response = await fetch(request);
       if (!response.ok) {
@@ -109,7 +111,7 @@ async function addOrder(body) {
 }
 
 async function editOrder(body, id) {
-    const path = `/api/courses/${id}`
+    const path = `/api/orders/${id}`
     try {
       const request = new Request(url + path + api_key, {
         method: "PUT",
@@ -128,7 +130,7 @@ async function editOrder(body, id) {
 }
 
 async function deleteOrder(id) {
-    const path = `/api/courses/${id}`
+    const path = `/api/orders/${id}`
     try {
       const request = new Request(url + path + api_key, {
         method: "DELETE",

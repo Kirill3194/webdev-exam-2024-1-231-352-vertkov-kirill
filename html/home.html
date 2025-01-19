@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Шапка сайта -->
   <header>
     <div class="container-fluid">
       <div class="column">
@@ -32,17 +31,14 @@
     </div>
   </header>
 
-  <!-- Область уведомлений -->
   <div class="alert alert-info" role="alert" id="notification-area">
     You have 3 upcoming lessons this week!
   </div>
 
-  <!-- Кнопка перехода на форму заказа -->
   <div class="container mt-4">
     <a href="coursesorder.html" class="btn btn-primary">Order a Course</a>
   </div>
 
-  <!-- Таблица заказов -->
   <a name="personal-account">
   <section class="container mt-5">
     <h2>Your Orders</h2>
@@ -57,11 +53,9 @@
         </tr>
       </thead>
       <tbody id="order-table-body">
-        <!-- Динамически заполняемая таблица -->
       </tbody>
     </table>
 
-    <!-- Пагинация -->
     <nav aria-label="Page navigation">
       <ul class="pagination justify-content-center">
         <li class="page-item">
@@ -81,7 +75,6 @@
     </nav>
   </section>
 
-  <!-- Модальное окно - Подробности заказа -->
   <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -98,7 +91,6 @@
     </div>
   </div>
 
-  <!-- Модальное окно - Изменение заказа -->
   <div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -130,7 +122,6 @@
     </div>
   </div>
 
-  <!-- Модальное окно - Удаление заказа -->
   <div class="modal fade" id="deleteOrderModal" tabindex="-1" aria-labelledby="deleteOrderModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -149,7 +140,6 @@
     </div>
   </div>
 
-  <!-- Футер -->
   <a name="contact">
   <footer class="text-center py-4">
     <div>
@@ -162,7 +152,6 @@
     </div>
   </footer>
 
-  <!-- JS файлы -->
   <script src="../js/api.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

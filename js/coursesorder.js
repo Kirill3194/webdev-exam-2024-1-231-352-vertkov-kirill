@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const coursesTable = document.getElementById('coursesTable');
     const modal = new bootstrap.Modal(document.getElementById('modal'));
     const searchButtonTutor = document.getElementById('searchButton');
+    const searchButtonCourse = document.getElementById('searchCourseButton');
     const languageLevelSelect = document.getElementById('languageLevel');
+    const languageLevelCourses = document.getElementById('courseLevel');
     const studentsNumberInput = document.getElementById('studentsNumber');
     const earlyRegistrationCheckbox = document.getElementById('earlyRegistration');
     const groupEnrollmentCheckbox = document.getElementById('groupEnrollment');
@@ -14,16 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const assessmentCheckbox = document.getElementById('assessment');
     const interactiveCheckbox = document.getElementById('interactive');
     const totalCostElement = document.getElementById('totalCost');
+    const lessonDurationInput = document.getElementById('lessonDuration');
+    const totalCostElementTutor = document.getElementById('totalCost_tutor');
+    const submitTutorSessionButton = document.getElementById('submitTutorSessionButton');
 
     let selectedTutor = null;
     let previousButton = null;
-    let hourlyRate = 0; // Ставка за час курса
-    let duration = 0; // Продолжительность курса
+    let hourlyRate = 0;
+    let duration = 0;
     let week_length = 0;
     let select_courses = 0;
+    let price_per_hour_tutor = 0;
 
-
-    // Show tutors based on language level
     function showTutors(languagelevel) {
         coursesTable.style.display = 'none';
         const parent = document.getElementById('resultsTableTurors');
@@ -40,27 +44,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${tutor.languages_offered.join(', ')}</td>
                         <td>${tutor.work_experience}</td>
                         <td>${tutor.price_per_hour}</td>
-                        <td><button class="btn btn-success select-button">Select</button></td>
+                        <td><button class="btn btn-success select-button-tutor" data-tutor-name="${tutor.name}" data-price-per-hour="${tutor.price_per_hour}" data-select-tutor="${tutor.id}">Select</button></td>
                     </tr>`);
                 }
             });
 
-            // Add event listeners to all select buttons
-            const selectButtons = document.querySelectorAll('.select-button');
+            const selectButtons = document.querySelectorAll('.select-button-tutor');
             selectButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const tutorRow = button.closest('tr');
                     const tutorId = tutorRow.getAttribute('data-tutor-id');
-                    const tutorName = tutorRow.getAttribute('data-tutor-name');
+                    tutorName = button.getAttribute('data-tutor-name');
+                    price_per_hour_tutor = parseFloat(button.getAttribute('data-price-per-hour'));
 
                     if (selectedTutor === tutorId) {
-                        // If same tutor clicked again, reset
                         selectedTutor = null;
                         button.classList.remove('btn-danger');
                         button.classList.add('btn-success');
                         coursesTable.style.display = 'none';
                     } else {
-                        // Reset previous button and hide previous courses
                         if (previousButton) {
                             previousButton.classList.remove('btn-danger');
                             previousButton.classList.add('btn-success');
@@ -69,31 +71,43 @@ document.addEventListener('DOMContentLoaded', function() {
                         button.classList.remove('btn-success');
                         button.classList.add('btn-danger');
                         previousButton = button;
-
-                        // Show courses of selected tutor
-                        searchCourses(tutorName);
                     }
+                    console.log(tutorName)
+                    document.getElementById('teacherName2').value = tutorName;
+                    document.getElementById('teacherName2').disabled = true;
+                    const modal = new bootstrap.Modal(document.getElementById('tutorModal'));
+                    modal.show();
+                    lessonDurationInput.addEventListener('input', (event) => {
+                        event.preventDefault();
+                        duration_tutor = parseInt(document.getElementById('lessonDuration').value);
+                        totalCost_tutor = duration_tutor * price_per_hour_tutor;
+                        totalCostElementTutor.textContent = totalCost_tutor.toFixed(2);
+                    });
                 });
             });
         });
     }
 
     searchButtonTutor.addEventListener('click', function(event) {
-        event.preventDefault();  // Отменяем стандартное поведение кнопки
+        event.preventDefault();
         const languageLevel = languageLevelSelect.value;
-        showTutors(languageLevel);  // Вызов функции для отображения репетиторов
+        showTutors(languageLevel);
     });
 
-    // Search and display courses taught by the selected tutor
-    function searchCourses(tutorName) {
+    searchButtonCourse.addEventListener('click', function(event) {
+        event.preventDefault();
+        const languageLevel = languageLevelCourses.value;
+        searchCourses(languageLevel);
+    });
+
+    function searchCourses(languagelevel) {
+        document.getElementById('coursesTable').style.display = 'block';
         const parent = document.getElementById('coursesList');
-        coursesTable.style.display = 'none';
-        coursesTable.style.display = 'block';
 
         getCourses().then(courses => {
             parent.innerHTML = '';
             courses.forEach(course => {
-                if (tutorName.toLowerCase() == course.teacher.toLowerCase()){
+                if (languagelevel.toLowerCase() == course.level.toLowerCase()) {
                     parent.insertAdjacentHTML('beforeend', 
                     `<tr>
                         <td>${course.name}</td>
@@ -107,17 +121,14 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${course.start_dates.map(date => `<option value="${date}">${date}</option>`).join('')}
                             </select>
                         </td>
-                        <td><button class="btn btn-primary select-button" data-course-name="${course.name}" data-instructor-name="${course.teacher}" data-duration="${course.total_length}" data-hourly-rate="${course.course_fee_per_hour}" data-start-date="${course.start_dates[0]}" data-week-length="${course.week_length}" data-select-courses="${course.id}" data-bs-toggle="modal" data-bs-target="#modal">Select</button></td>
+                        <td><button class="btn btn-primary select-button-courses" data-course-name="${course.name}" data-instructor-name="${course.teacher}" data-duration="${course.total_length}" data-hourly-rate="${course.course_fee_per_hour}" data-start-date="${course.start_dates[0]}" data-week-length="${course.week_length}" data-select-courses="${course.id}" data-bs-toggle="modal" data-bs-target="#modal">Select</button></td>
                     </tr>`);
-
                 }
             });
 
-            // Add event listeners to all course select buttons
-            const courseSelectButtons = document.querySelectorAll('.select-button');
+            const courseSelectButtons = document.querySelectorAll('.select-button-courses');
             courseSelectButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Get the data from the selected button
                     const courseName = button.getAttribute('data-course-name');
                     const instructorName = button.getAttribute('data-instructor-name');
                     duration = parseInt(button.getAttribute('data-duration'));
@@ -126,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     week_length = parseFloat(button.getAttribute('data-week-length'));
                     select_courses = parseInt(button.getAttribute('data-select-courses'));
 
-                    // Fill modal fields with the course data
                     document.getElementById('courseName').value = courseName;
                     document.getElementById('courseName').disabled = true;
                     document.getElementById('teacherName').value = instructorName;
@@ -138,48 +148,43 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('time').value = startDate.split('T')[1].slice(0, 5);
                     document.getElementById('time').disabled = true;
 
-                    // Set the number of students and update cost
                     const studentsNumber = studentsNumberInput.value;
                     updateTotalCost(studentsNumber);
 
-                    // Open modal
                     modal.show();
                 });
             });
         });
     }
 
-    // Function to calculate and update the total cost
     function updateTotalCost(studentsNumber) {
-        let totalCost = hourlyRate * duration * studentsNumber * week_length; // Base cost
+        let totalCost = hourlyRate * duration * studentsNumber * week_length;
 
-        // Apply discounts and surcharges based on selected checkboxes
         if (earlyRegistrationCheckbox.checked) {
-            totalCost *= 0.9; // Early registration discount (10%)
+            totalCost *= 0.9;
         }
         if (groupEnrollmentCheckbox.checked) {
-            totalCost *= 0.85; // Group discount (15%)
+            totalCost *= 0.85;
         }
         if (intensiveCourseCheckbox.checked) {
-            totalCost *= 1.2; // Intensive course surcharge (20%)
+            totalCost *= 1.2;
         }
         if (supplementaryCheckbox.checked) {
-            totalCost += 2000 * studentsNumber; // Additional materials
+            totalCost += 2000 * studentsNumber;
         }
         if (personalizedCheckbox.checked) {
-            totalCost += 1500 * duration * studentsNumber; // Personalized lessons surcharge
+            totalCost += 1500 * duration * studentsNumber;
         }
         if (excursionsCheckbox.checked) {
-            totalCost *= 1.25; // Cultural excursions surcharge (25%)
+            totalCost *= 1.25;
         }
         if (assessmentCheckbox.checked) {
-            totalCost += 300 * studentsNumber; // Language assessment surcharge
+            totalCost += 300 * studentsNumber;
         }
         if (interactiveCheckbox.checked) {
-            totalCost *= 1.5; // Interactive platform surcharge (50%)
+            totalCost *= 1.5;
         }
 
-        // Update the total cost display
         totalCostElement.textContent = totalCost.toFixed(2);
 
         earlyRegistrationCheckbox.addEventListener('change', function() {
@@ -211,30 +216,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add order
-    document.getElementById('submitOrderButton').addEventListener('click', function() {
-        const studentsNumber = studentsNumberInput.value;
-        console.log(studentsNumber);
-        const courseData = {
-            "course_id": select_courses,
-            "date": document.getElementById('startDate').value,
-            "time": document.getElementById('time').value,
-            "persons": parseInt(studentsNumber),
-            "price": parseInt(totalCostElement.textContent),
-            "early_registration": earlyRegistrationCheckbox.checked,
-            "group_enrollment": groupEnrollmentCheckbox.checked,
-            "intensive_course": intensiveCourseCheckbox.checked,
-            "supplementary": supplementaryCheckbox.checked,
-            "personalized": personalizedCheckbox.checked,
-            "excursions": excursionsCheckbox.checked,
-            "assessment": assessmentCheckbox.checked,
-            "interactive": interactiveCheckbox.checked,
+    submitTutorSessionButton.addEventListener('click', function() {
+        const tutorData = {
+            tutor_id: selectedTutor,
+            date_start: document.getElementById('startDate_tutor').value,
+            time_start: document.getElementById('time_tutor').value,
+            persons: parseInt(document.getElementById('studentsNumber_tutor').value),
+            price: parseInt(totalCostElementTutor.textContent),
+            duration: parseInt(document.getElementById('lessonDuration').value)
         };
-        console.log(courseData);
 
-        addOrder(courseData).then(response => {
-            // Обработка ответа от сервера
+        addOrder(tutorData).then(response => {
             console.log(response);
         });
+    });
+
+    document.getElementById('submitOrderButton').addEventListener('click', function() {
+        const studentsNumber = studentsNumberInput.value;
+        const courseData = {
+            course_id: select_courses,
+            date_start: document.getElementById('startDate').value,
+            time_start: document.getElementById('time').value,
+            persons: parseInt(studentsNumber),
+            price: parseInt(totalCostElement.textContent),
+            duration: duration * week_length,
+            early_registration: earlyRegistrationCheckbox.checked,
+            group_enrollment: groupEnrollmentCheckbox.checked,
+            intensive_course: intensiveCourseCheckbox.checked,
+            supplementary: supplementaryCheckbox.checked,
+            personalized: personalizedCheckbox.checked,
+            excursions: excursionsCheckbox.checked,
+            assessment: assessmentCheckbox.checked,
+            interactive: interactiveCheckbox.checked,
+        };
+
+        addOrder(courseData).then(response => {
+            console.log(response);
+        });
+    });
+
+    document.getElementById('searchType').addEventListener('change', function() {
+        var searchType = this.value;
+        if (searchType === 'tutor') {
+            document.getElementById('tutorSearch').style.display = 'block';
+            document.getElementById('courseSearch').style.display = 'none';
+        } else if (searchType === 'course') {
+            document.getElementById('tutorSearch').style.display = 'none';
+            document.getElementById('courseSearch').style.display = 'block';
+        }
     });
 });
