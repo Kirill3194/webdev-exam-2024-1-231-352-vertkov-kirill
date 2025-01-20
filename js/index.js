@@ -45,7 +45,7 @@ function searchCourses(name, level) {
         allCourses = courses;
         parent.innerHTML = '';
         for (const course of courses) {
-            if ((name == '' || name.toLowerCase() == course.name.toLowerCase()) && level == course.level.toLowerCase()) {
+            if ((name == '' || course.name.toLowerCase().includes(name.toLowerCase())) && level == course.level.toLowerCase()) {
                 parent.insertAdjacentHTML('beforeend', `<div class="col-md-4">
                     <div class="card">
                         <p style="margin-left: 10px;">${course.id} - Name: ${course.name} - Level: ${course.level} - Teacher: ${course.teacher} - Week length: ${course.total_length}</p>

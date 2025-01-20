@@ -117,11 +117,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>${course.week_length}</td>
                         <td>${course.course_fee_per_hour}</td>
                         <td>
-                            <select class="form-select">
+                            <select class="form-select" id="data_course${course.id}">
                                 ${course.start_dates.map(date => `<option value="${date}">${date}</option>`).join('')}
                             </select>
                         </td>
-                        <td><button class="btn btn-primary select-button-courses" data-course-name="${course.name}" data-instructor-name="${course.teacher}" data-duration="${course.total_length}" data-hourly-rate="${course.course_fee_per_hour}" data-start-date="${course.start_dates[0]}" data-week-length="${course.week_length}" data-select-courses="${course.id}" data-bs-toggle="modal" data-bs-target="#modal">Select</button></td>
+                        <td><button class="btn btn-primary select-button-courses" data-course-id="${course.id}" data-course-name="${course.name}" data-instructor-name="${course.teacher}" data-duration="${course.total_length}" data-hourly-rate="${course.course_fee_per_hour}" data-start-date="${course.start_dates[0]}" data-week-length="${course.week_length}" data-select-courses="${course.id}" data-bs-toggle="modal" data-bs-target="#modal">Select</button></td>
                     </tr>`);
                 }
             });
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const instructorName = button.getAttribute('data-instructor-name');
                     duration = parseInt(button.getAttribute('data-duration'));
                     hourlyRate = parseFloat(button.getAttribute('data-hourly-rate'));
-                    const startDate = button.getAttribute('data-start-date');
+                    const startDate = document.getElementById(`data_course${button.getAttribute('data-course-id')}`).value;
                     week_length = parseFloat(button.getAttribute('data-week-length'));
                     select_courses = parseInt(button.getAttribute('data-select-courses'));
 
@@ -163,8 +163,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (earlyRegistrationCheckbox.checked) {
             totalCost *= 0.9;
         }
-        if (groupEnrollmentCheckbox.checked) {
+        if (studentsNumber >= 5) {
             totalCost *= 0.85;
+            groupEnrollmentCheckbox.checked = true;
+        }
+        if (studentsNumber < 5 && groupEnrollmentCheckbox.checked) {
+            groupEnrollmentCheckbox.checked = false;
         }
         if (intensiveCourseCheckbox.checked) {
             totalCost *= 1.2;
@@ -186,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         totalCostElement.textContent = totalCost.toFixed(2);
+    }
 
         earlyRegistrationCheckbox.addEventListener('change', function() {
             updateTotalCost(studentsNumberInput.value);
@@ -214,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         studentsNumberInput.addEventListener('input', function() {
             updateTotalCost(studentsNumberInput.value);
         });
-    }
+    
 
     submitTutorSessionButton.addEventListener('click', function() {
         const tutorData = {
